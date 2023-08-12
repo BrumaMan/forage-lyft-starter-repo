@@ -1,4 +1,4 @@
-from battery import Battery
+from battery.battery import Battery
 
 
 class NubbinBattery(Battery):
@@ -8,5 +8,5 @@ class NubbinBattery(Battery):
         self.current_date = current_date
 
     def needs_service(self):
-        return self.current_date.year - self.last_service_date.year >= 4
+        return self.current_date.year - self.last_service_date.year > 4
     
