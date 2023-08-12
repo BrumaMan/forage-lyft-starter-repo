@@ -1,12 +1,9 @@
 from datetime import datetime
 
-from engine.capulet_engine import CapuletEngine
+from car import Car
 
 
-class Calliope(CapuletEngine):
+class Calliope(Car):
     def needs_service(self):
-        service_threshold_date = self.last_service_date.replace(year=self.last_service_date.year + 2)
-        if service_threshold_date < datetime.today().date() or self.engine_should_be_serviced():
-            return True
-        else:
-            return False
+        service_threshold_date = self.battery.last_service_date.replace(year=self.battery.last_service_date.year + 2)
+        return service_threshold_date < datetime.today().date() or super().needs_service()
